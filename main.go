@@ -22,6 +22,6 @@ func main() {
 	for index := 0; index < 10; index++ {
 		fmt.Printf("%s >", name)
 		fmt.Printf("I'm %s routine...(count %d)\n", name, index)
-	<-ch
+		<-ch
 	}
 }
