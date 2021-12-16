@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
@@ -13,10 +12,9 @@ func main() {
 	go func() {
 		name := "sub"
 		for index := 0; index < 10; index++ {
-			<-ch
 			fmt.Printf("%s >", name)
 			fmt.Printf("I'm %s routine...(count %d)\n", name, index)
-			time.Sleep(time.Second)
+		ch <- true
 		}
 	}()
 
@@ -24,7 +22,6 @@ func main() {
 	for index := 0; index < 10; index++ {
 		fmt.Printf("%s >", name)
 		fmt.Printf("I'm %s routine...(count %d)\n", name, index)
-		ch <- true
-		time.Sleep(time.Second)
+	<-ch
 	}
 }
